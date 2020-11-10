@@ -1,0 +1,15 @@
+kumuluzee:
+  name: image-handling-service
+  env:
+    name: dev
+  version: 1.0.0
+  server:
+    base-url: http://localhost:8080
+    http:
+      port: 8080
+  datasources:
+    - jndi-name: jdbc/ImageHandlingDS
+      connection-url: jdbc:postgresql://192.168.29.109:5432/image-handling
+      username: user
+      password: postgres
+      max-pool-size: 20
