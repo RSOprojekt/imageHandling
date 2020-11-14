@@ -22,6 +22,18 @@ public class ImageHandlingBean {
     @Inject
     private EntityManager entMgr;
 
+    private void beginT(){
+        if (entMgr.getTransaction().isActive())entMgr.getTransaction().begin();
+    }
+
+    private void commitT(){
+        if (entMgr.getTransaction().isActive()) entMgr.getTransaction().commit();
+    }
+
+    private void rollbackT(){
+        if (entMgr.getTransaction().isActive()) entMgr.getTransaction().rollback();
+    }
+
     public List<ImageData> getImageData(){
         TypedQuery<ImageHandlingEntity> q =entMgr.createNamedQuery("ImageHandlingEntity.getAll", ImageHandlingEntity.class);
         List<ImageHandlingEntity> results = q.getResultList();
@@ -37,7 +49,58 @@ public class ImageHandlingBean {
         return DataConverter.convertToDto(entity);
     }
 
+    public ImageData createImageData(ImageData data){
+        ImageHandlingEntity entity = DataConverter.convertToEntity(data);
+        try {
+            beginT();
+            entMgr.persist(entity);
+            commitT();
+        }
+        catch (Exception e){
+            rollbackT();
+        }
+        if (entity.getId() == null) {
+            logger.severe("Entity with id: " + entity.getId() + " not persisted");
+            throw new RuntimeException();
+        }
+        return DataConverter.convertToDto(entity);
+    }
 
+    public ImageData updateImageData(Integer id, ImageData data){
 
+        ImageHandlingEntity entity = DataConverter.convertToEntity(data);
+        ImageHandlingEntity found = entMgr.find(ImageHandlingEntity.class, id);
+        if (found == null) return null;
+        try {
+            beginT();
+            entity.setId(found.getId());
+            entity = entMgr.merge(entity);
+            commitT();
+        }
+        catch (Exception e){
+            logger.severe("Update of entity with id: " + id + " was unsuccessful");
+            rollbackT();
+        }
+        return DataConverter.convertToDto(entity);
+    }
+
+    public boolean deleteImageData(Integer id){
+        ImageHandlingEntity entity = entMgr.find(ImageHandlingEntity.class, id);
+        if (entity != null) {
+            try {
+                beginT();
+                entMgr.remove(entity);
+                commitT();
+            }
+            catch (Exception e){
+                logger.severe("Entity with id: " + id + " was not removed");
+                rollbackT();
+            }
+        }
+        else {
+            return false;
+        }
+        return  true;
+    }
 
 }
