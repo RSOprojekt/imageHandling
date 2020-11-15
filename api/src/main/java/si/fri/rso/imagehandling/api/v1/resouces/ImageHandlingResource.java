@@ -2,10 +2,7 @@ package si.fri.rso.imagehandling.api.v1.resouces;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -40,4 +37,41 @@ public class ImageHandlingResource {
         return Response.status(Response.Status.OK).entity(imageData).build();
     }
 
+    @GET
+    @Path("/{imageDataId}")
+    public Response getImageData(@PathParam("imageDataId") Integer imageDataId){
+        ImageData data = imageHandlingBean.getImageData(imageDataId);
+        if (data == null){
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return  Response.status(Response.Status.OK).entity(data).build();
+    }
+
+    @PUT
+    @Path("{imageDataId}")
+    public Response putImageData(@PathParam("imageDataId") Integer imageDataId, ImageData data){
+        data = imageHandlingBean.updateImageData(imageDataId, data);
+        if (data == null){
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+            return Response.status(Response.Status.NOT_MODIFIED).build();
+    }
+
+    @POST
+    public Response createImageData(ImageData data){
+        if (data.getImageUrl() == null || data.getImageTitle() == null || data.getImageDescription() == null){
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } else {
+            data = imageHandlingBean.createImageData(data);
+        }
+        return Response.status(Response.Status.OK).entity(data).build();
+    }
+
+    @DELETE
+    @Path("{imageDataId}")
+    public Response deleteImageData(@PathParam("imageDataId") Integer imageDataId){
+        boolean delSuccess = imageHandlingBean.deleteImageData(imageDataId);
+        if (delSuccess) return  Response.status(Response.Status.NO_CONTENT).build();
+        else return Response.status(Response.Status.NOT_FOUND).build();
+    }
 }
