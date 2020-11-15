@@ -1,6 +1,9 @@
 package si.fri.rso.imagehandling.services.beans;
 
+import com.kumuluz.ee.rest.beans.QueryParameters;
 
+
+import com.kumuluz.ee.rest.utils.JPAUtils;
 import si.fri.rso.imagehandling.lib.ImageData;
 import si.fri.rso.imagehandling.models.converters.DataConverter;
 import si.fri.rso.imagehandling.models.enteties.ImageHandlingEntity;
@@ -10,6 +13,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.NotFoundException;
+import javax.ws.rs.core.UriInfo;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -38,6 +42,12 @@ public class ImageHandlingBean {
         TypedQuery<ImageHandlingEntity> q =entMgr.createNamedQuery("ImageHandlingEntity.getAll", ImageHandlingEntity.class);
         List<ImageHandlingEntity> results = q.getResultList();
         return results.stream().map(DataConverter::convertToDto).collect(Collectors.toList());
+    }
+
+    public List<ImageData> getImageDataFilter(UriInfo uriInfo){
+        QueryParameters q = QueryParameters.query(uriInfo.getRequestUri().getQuery()).defaultOffset(0).build();
+        return JPAUtils.queryEntities(entMgr,ImageHandlingEntity.class,q).stream().map(DataConverter::convertToDto)
+                .collect(Collectors.toList());
     }
 
     public ImageData getImageData(Integer id){
