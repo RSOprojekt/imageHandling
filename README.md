@@ -1,4 +1,4 @@
-#RSO: Image Handling microservice
+# RSO: Image Handling microservice
 
 ## Prerequisites
 
