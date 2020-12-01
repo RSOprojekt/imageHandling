@@ -53,7 +53,6 @@ public class ImageHandlingBean {
     public ImageData getImageData(Integer id){
         ImageHandlingEntity entity = entMgr.find(ImageHandlingEntity.class,id);
         if (entity == null) {
-            logger.severe("Couldn't find image data with id " + id + "!");
             throw new NotFoundException();
         }
         return DataConverter.convertToDto(entity);
@@ -70,7 +69,6 @@ public class ImageHandlingBean {
             rollbackT();
         }
         if (entity.getId() == null) {
-            logger.severe("Entity with id: " + entity.getId() + " not persisted");
             throw new RuntimeException();
         }
         return DataConverter.convertToDto(entity);
@@ -88,7 +86,6 @@ public class ImageHandlingBean {
             commitT();
         }
         catch (Exception e){
-            logger.severe("Update of entity with id: " + id + " was unsuccessful");
             rollbackT();
         }
         return DataConverter.convertToDto(entity);
@@ -103,7 +100,6 @@ public class ImageHandlingBean {
                 commitT();
             }
             catch (Exception e){
-                logger.severe("Entity with id: " + id + " was not removed");
                 rollbackT();
             }
         }
