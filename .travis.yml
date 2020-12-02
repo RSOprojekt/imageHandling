@@ -1,0 +1,21 @@
+sudo: required
+services:
+  - docker
+language: java
+dist: bionic
+jdk:
+  - openjdk15
+cache:
+  directories:
+    - "$HOME/.m2"
+env:
+  global:
+    - DOCKER_IMAGE=gdvorsak97/imghandling1:1.0.0-SNAPSHOT-$TRAVIS_JOB_NUMBER
+    - secure:
+    - secure:
+script:
+  - mvn clean package -U
+  - docker build -t "$DOCKER_IMAGE" .
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - doker push "$DOCKER_IMAGE"
