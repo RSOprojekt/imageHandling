@@ -11,8 +11,12 @@ cache:
 env:
   global:
     - DOCKER_IMAGE=gdvorsak97/imghandling1:1.0.0-SNAPSHOT-$TRAVIS_JOB_NUMBER
-    - secure:
-    - secure:
+    - secure: "nHRJb0GIhOMDdCaTMAMl2ehndR6/UTUTmGgYy6RNQ70IttuawLuyIuWD2n+Q92dRsy/h/NIRnA2wn/UvjyjJpOWl/sEZbAIJ+qFTxCIYnFLRtejdzi8kfcYaoc2Fy8wxnC3v1xkNrJz34pQKPaePqxpym5gxonIhd1rZmOOhlUkrlZke2xGTm2P+gceFrpvXBn2n6JIdkmfgNsuQ07p2IuQjwhs09
+      jsUYO8a0qmGzyDa1yAafms5NV94RNO4+yN4EfTx8+ZbJzazE1u2vT2DzmBdcojNt9kKfw+M4zp80NaL5xs1pg6x8Ze7mJW/tHRI0ln0C7GDa9yPRpsf8xMso+vaKuXFnMCeQhRayJ3b4DAjhavZ2NBOFZsChtyFd2UYrNpvcgHmJgSOzU+N2gZSsUqz2tZmdHtrNgJkGHurqkQCf7RAipuegCTBhc5k1Ii0LH2WL
+      J2cW9hzTHBIpJDgE0jwkC6CSqVR+8+Hu++Uay3sANo8DXFjLdTm66wrpjDroObbHnsaPvNwBb1f0P75jgf05KyLNx2JNCpc0HxtqGicnzNt8zgnJTsXWJCAqcaLkKhMEvzheQAfrmi2fG4oIygCZDIFTDYliX8YHtM/0UwZnI8ta/0wmNDnMVSjTVCF2cdsLkN3+Lmh+lRfnWoWWnFdE6FM64JEUrbIzcHXSfg="
+    - secure: "TliLr+umPBpVOEZbgCrUXTEdROLM6SEGYIBLM6+fX/dGHesWNANzO14/ZZwxAXjVU6A5bTfheyj302vLgoidtMyc6/B7VhkiX6aPkH9ueNZZx6lfSH2vR/YENH4a5gt77Kw/Vn/LEhs7wMc0yneCo2na99UllsfOCLh6dMFFhOR5H9zPTM3mXfIiuzcKMJHhePKCCP4meC/Yem0PVBR37z6IyV0km
+      eu1L6o9qsGvBfyWevpOh1z4GGwwxtDnTcsjFdU9j5ccE2kkX4+AUYLJc4JaqoRW8qOyYWHa34KrTtxnZxdvEvEqjOjIqCvG/QwDOGtb+OgimxW5GdOOC0LusW2kbmV/W1PRzf0/8Tz0PA2uifPjT/f2+0LK7/wKg6/v5UD4+DjAeWz1KMyhosy8wai1Rz3cLjKSEW3hmivxV1BCB3mavI5Yr3wt8qFiyxReyUi/F
+      csiMruckqsANQSpY2Mh72uc4x8ut3vXINkSplB2UW5WWKMhNk0UNTEw7EgQ0RNDfn/KwslAFhomeHDdAy20wzIUkz64uBQO7FYR9r/CwbfQ39Vt6Ksqpc/1ug3Aur5F6cO3jgU7qsQwjnYgYfpYXzpCLuBhtVkKHzTdMRKm36D2tTN4qKYOhORzF0XFg9ZFyb8xKmDLLUEb1aiwtMLy30KvbWOS+w3YYJ8HRds="
 script:
   - mvn clean package -U
   - docker build -t "$DOCKER_IMAGE" .
