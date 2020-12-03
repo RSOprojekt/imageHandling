@@ -23,8 +23,8 @@
         </dependency>
 
         <dependency>
+            <artifactId>kumuluzee-config-consul</artifactId>
             <groupId>com.kumuluz.ee.config</groupId>
-            <artifactId>kumuluzee-config-etcd</artifactId>
         </dependency>
         <dependency>
             <groupId>si.fri.rso</groupId>
