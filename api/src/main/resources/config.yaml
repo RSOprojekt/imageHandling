@@ -9,9 +9,8 @@ kumuluzee:
       port: 8080
   datasources:
     - jndi-name: jdbc/ImageHandlingDS
-      connection-url: jdbc:postgresql://localhost:65432/image-data
-      username: dbuser
-      password: postgres
-      max-pool-size: 20
+      connection-url: jdbc:postgresql://suleiman.db.elephantsql.com:5432/qqvsuwix
+      username: qqvsuwix
+      password: QqKJn0QkHNGIkto-Y9CqUuvE_EQHtJMi
 rest-properties:
   dev-mode: false
