@@ -53,6 +53,7 @@
         <dependency>
             <groupId>com.kumuluz.ee.metrics</groupId>
             <artifactId>kumuluzee-metrics-core</artifactId>
+            <version>2.3.0</version>
         </dependency>
 
         <dependency>
