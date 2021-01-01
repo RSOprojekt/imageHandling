@@ -13,7 +13,7 @@ spec:
         app: image-handling
     spec:
       containers:
-        - image: rsogalerija/imagehandling:1.0.0-SNAPSHOT-15.1
+        - image: rsogalerija/imagehandling:1.0.0-SNAPSHOT-17.1
           name: image-handling
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
@@ -29,6 +29,18 @@ spec:
             - containerPort: 8080
               name: server
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: server
+            initialDelaySeconds: 20
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: server
+            initialDelaySeconds: 20
+            periodSeconds: 3
 ---
 
 apiVersion: v1

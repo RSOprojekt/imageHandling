@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 
 @ApplicationScoped
-@Path("/gallery")
+@Path("/images")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @CrossOrigin(supportedMethods = "GET, POST, HEAD, DELETE, OPTIONS")

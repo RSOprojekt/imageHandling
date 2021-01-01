@@ -27,6 +27,10 @@
             <groupId>com.kumuluz.ee.config</groupId>
         </dependency>
         <dependency>
+            <artifactId>kumuluzee-health</artifactId>
+            <groupId>com.kumuluz.ee.health</groupId>
+        </dependency>
+        <dependency>
             <groupId>si.fri.rso</groupId>
             <artifactId>galerija-services</artifactId>
             <version>1.0-SNAPSHOT</version>

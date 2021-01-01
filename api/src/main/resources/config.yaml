@@ -12,5 +12,17 @@ kumuluzee:
       connection-url: jdbc:postgresql://suleiman.db.elephantsql.com:5432/qqvsuwix
       username: qqvsuwix
       password: QqKJn0QkHNGIkto-Y9CqUuvE_EQHtJMi
+  health:
+    checks:
+      data-source-health-check:
+        type: liveness
+        jndi-name: jdbc/ImageHandlingDS
+      disk-space-health-check:
+        threshold: 100
+  metrics:
+    web-instrumentation:
+      - name: images-enpoint
+        url-pattern: /v1/images/*
 rest-properties:
   dev-mode: false
+  broken: false

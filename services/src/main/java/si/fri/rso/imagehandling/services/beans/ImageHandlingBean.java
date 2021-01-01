@@ -4,6 +4,7 @@ import com.kumuluz.ee.rest.beans.QueryParameters;
 
 
 import com.kumuluz.ee.rest.utils.JPAUtils;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 import si.fri.rso.imagehandling.lib.ImageData;
 import si.fri.rso.imagehandling.models.converters.DataConverter;
 import si.fri.rso.imagehandling.models.enteties.ImageHandlingEntity;
@@ -44,6 +45,7 @@ public class ImageHandlingBean {
         return results.stream().map(DataConverter::convertToDto).collect(Collectors.toList());
     }
 
+    @Timed
     public List<ImageData> getImageDataFilter(UriInfo uriInfo){
         QueryParameters q = QueryParameters.query(uriInfo.getRequestUri().getQuery()).defaultOffset(0).build();
         return JPAUtils.queryEntities(entMgr,ImageHandlingEntity.class,q).stream().map(DataConverter::convertToDto)
