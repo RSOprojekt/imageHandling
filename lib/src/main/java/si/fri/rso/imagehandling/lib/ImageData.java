@@ -13,6 +13,7 @@ public class ImageData {
     private Instant timeCreated;
     private Instant timeChanged;
     private String imageFileFormat;
+    private Integer commentNumber;
     //private byte[] imageBinary;
 
     public Integer getImageId() {
@@ -86,6 +87,10 @@ public class ImageData {
     public void setImageFileFormat(String imageFileFormat) {
         this.imageFileFormat = imageFileFormat;
     }
+
+    public Integer getCommentNumber() {return commentNumber;}
+
+    public void setCommentNumber(Integer commentNumber) {this.commentNumber = commentNumber;}
 
     /*public byte[] getImageBinary() {
         return imageBinary;
