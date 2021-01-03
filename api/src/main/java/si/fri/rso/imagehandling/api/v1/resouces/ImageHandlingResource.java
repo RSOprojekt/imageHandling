@@ -9,6 +9,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import com.kumuluz.ee.cors.annotations.CrossOrigin;
+import com.kumuluz.ee.logs.cdi.Log;
 import si.fri.rso.imagehandling.lib.ImageData;
 import si.fri.rso.imagehandling.services.beans.ImageHandlingBean;
 
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 
+@Log
 @ApplicationScoped
 @Path("/images")
 @Consumes(MediaType.APPLICATION_JSON)
