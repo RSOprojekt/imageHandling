@@ -11,6 +11,7 @@ public class RestProperties {
 
     @ConfigValue(watch=true)
     private Boolean devMode;
+    @ConfigValue(watch=true)
     private Boolean broken;
 
     public Boolean getDevMode() {

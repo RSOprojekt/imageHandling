@@ -23,7 +23,8 @@ kumuluzee:
     web-instrumentation:
       - name: images-enpoint
         url-pattern: /v1/images/*
-  logs: '<?xml version="1.0" encoding="UTF-8"?>
+  logs:
+    config-file: '<?xml version="1.0" encoding="UTF-8"?>
                 <Configuration name="comments">
                     <Appenders>
                         <Console name="console" target="SYSTEM_OUT">
@@ -42,7 +43,6 @@ kumuluzee:
                         </Root>
                     </Loggers>
                 </Configuration>'
-    config-file:
 rest-properties:
   dev-mode: false
   broken: false
