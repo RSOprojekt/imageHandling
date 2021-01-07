@@ -13,7 +13,7 @@ spec:
         app: image-handling
     spec:
       containers:
-        - image: rsogalerija/imagehandling:1.0.0-SNAPSHOT-17.1
+        - image: rsogalerija/imagehandling:1.0.0-SNAPSHOT-23.1
           name: image-handling
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
@@ -48,10 +48,11 @@ kind: Service
 metadata:
   name: image-handling
 spec:
-  type: LoadBalancer
+  clusterIP: 10.0.247.10
   ports:
     - port: 8080
       protocol: TCP
       targetPort: server
   selector:
     app: image-handling
+    type: ClusterIP

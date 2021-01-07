@@ -11,7 +11,7 @@ spec:
   rules:
     - http:
         paths:
-            path: /image-handling(/|$)(.*)
-          - backend:
+          - path: /image-handling(/|$)(.*)
+            backend:
               serviceName: image-handling
               servicePort: 8080
