@@ -2,6 +2,9 @@ kumuluzee:
   name: image-handling-service
   env:
     name: dev
+  config:
+    etcd:
+      hosts: http://192.168.99.100:2379
   version: 1.0.0
   server:
     base-url: http://localhost:8080
@@ -14,7 +17,9 @@ kumuluzee:
       password: QqKJn0QkHNGIkto-Y9CqUuvE_EQHtJMi
   health:
     checks:
-
+      #data-source-health-check:
+        #type: liveness
+        #jndi-name: jdbc/ImageHandlingDS
       disk-space-health-check:
         threshold: 100
   metrics:
