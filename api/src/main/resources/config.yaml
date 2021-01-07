@@ -14,9 +14,7 @@ kumuluzee:
       password: QqKJn0QkHNGIkto-Y9CqUuvE_EQHtJMi
   health:
     checks:
-      data-source-health-check:
-        type: liveness
-        jndi-name: jdbc/ImageHandlingDS
+
       disk-space-health-check:
         threshold: 100
   metrics:
