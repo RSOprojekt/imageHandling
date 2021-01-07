@@ -13,7 +13,7 @@ spec:
         app: image-handling
     spec:
       containers:
-        - image: rsogalerija/imagehandling:1.0.0-SNAPSHOT-27.1
+        - image: rsogalerija/imagehandling:1.0.0-SNAPSHOT-28.1
           name: image-handling
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
