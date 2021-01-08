@@ -2,9 +2,6 @@ kumuluzee:
   name: image-handling-service
   env:
     name: dev
-  config:
-    etcd:
-      hosts: http://40.76.162.137:2379
   version: 1.0.0
   server:
     base-url: http://localhost:8080
